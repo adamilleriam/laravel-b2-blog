@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class LoginController extends Controller
 {
@@ -24,6 +25,7 @@ class LoginController extends Controller
             return redirect()->intended('dashboard');
         }
 
-        return redirect()->back()->with(['message'=>'Email or Password invalid']);
+        session()->flash('message','Invalid email or password');
+        return redirect()->back()->withInput(['email'=>$request->email]);
     }
 }

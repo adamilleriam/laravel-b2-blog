@@ -20,8 +20,8 @@
                 </ul>
             </div>
         @endif
-        @if(old('message'))
-            <span>{{ old('message') }}</span>
+        @if(session('message'))
+            {{ session('message') }}
         @endif
         <form class="login-form" action="{{ route('user.login') }}" method="post">
             @csrf
