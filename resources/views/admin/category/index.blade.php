@@ -5,7 +5,7 @@
             <div class="card">
                 <div class="card-body">
                     <h4 class="card-title">{{ $title }}</h4>
-                    <h6 class="card-title m-t-40"><i class="m-r-5 font-18 mdi mdi-numeric-1-box-multiple-outline"></i> Table With Outside Padding</h6>
+                    <a href="{{ route('category.create') }}" class="btn btn-primary">Add new</a>
                     <div class="table-responsive">
                         <table class="table">
                             <thead>
