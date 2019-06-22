@@ -20,6 +20,7 @@ Route::post('login','LoginController@login')->name('user.login');
 Route::middleware('auth')->group(function (){
     Route::get('dashboard','DashboardController@index')->name('dashboard');
     Route::get('profile','UserController@profile')->name('user.profile');
+    Route::resource('category','CategoryController');
 });
 
 Route::get('emergency-logout',function (){
