@@ -14,7 +14,6 @@ class AuthorController extends Controller
      */
     public function index()
     {
-
         $data['title'] = 'Author List';
         $data['authors'] = Author::orderBy('id','desc')->get();
         $data['serial'] = 1;
