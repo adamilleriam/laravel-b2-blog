@@ -63,6 +63,18 @@
     @enderror
 </div>
 <div class="form-group">
+    <label class="col-md-12">Image</label>
+    <div class="col-md-12">
+        @if(isset($post) && $post->file != null)
+            <img src="{{ asset($post->file) }}" alt="">
+        @endif
+        <input name="file" type="file" placeholder="Upload file" class="form-control form-control-line @error('file') is-invalid @enderror">
+    </div>
+    @error('image')
+    <div class="pl-1 text-danger">{{ $message }}</div>
+    @enderror
+</div>
+<div class="form-group">
     <label class="col-md-12">Status</label>
     @php
         if(old("status")){

@@ -6,6 +6,7 @@ use App\Author;
 use App\Category;
 use App\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 
 class PostController extends Controller
 {
@@ -53,6 +54,15 @@ class PostController extends Controller
             'status'=>'required',
         ]);
         $post = $request->except('_token');
+
+
+        // File upload
+        if($request->hasFile('file')) {
+            $file = $request->file('file');
+            $file->move('images/post/', $file->getClientOriginalName());
+            $post['file'] = 'images/post/'.$file->getClientOriginalName();
+        }
+
         Post::create($post);
         session()->flash('message','Post created successfully');
         return redirect()->route('post.index');
@@ -94,12 +104,22 @@ class PostController extends Controller
     public function update(Request $request, Post $post)
     {
         $request->validate([
+            'category_id'=>'required',
+            'author_id'=>'required',
             'title'=>'required',
             'details'=>'required',
             'status'=>'required',
         ]);
 
-        $post->update($request->except('_token'));
+        $post_r = $request->except('_token');
+        // File upload
+        if($request->hasFile('file')) {
+            $file = $request->file('file');
+            $file->move('images/post/', $file->getClientOriginalName());
+            File::delete($post->file);
+            $post_r['file'] = 'images/post/'.$file->getClientOriginalName();
+        }
+        $post->update($post_r);
         session()->flash('message','Post updated successfully');
         return redirect()->route('post.index');
     }
