@@ -111,12 +111,12 @@
                                 <div class="d-flex flex-wrap">
                                     <div class="post-thumb align-self-stretch order-md-2">
                                         <a href="blog-details.html">
-                                            <div data-bg-img="assets/images/blog/1.jpg') }}"></div>
+                                            <div data-bg-img="{{ asset($post->file) }}"></div>
                                         </a>
                                     </div>
                                     <div class="post-data order-md-1">
                                         <!-- Category -->
-                                        <div class="cats"><a href="#">Love</a></div>
+                                        <div class="cats"><a href="#">{{ $post->category->name }}</a></div>
                                         <!-- Title -->
                                         <div class="title">
                                             <h2><a href="#">{{ $post->title }}</a></h2>
@@ -125,19 +125,19 @@
                                         <ul class="nav meta align-items-center">
                                             <li class="meta-author">
                                                 <img src="{{ asset('theme-front/images/blog/author.jpg') }}" alt="" class="img-fluid">
-                                                <a href="#">Alex Garry</a>
+                                                <a href="#">{{ $post->author->name }}</a>
                                             </li>
-                                            <li class="meta-date"><a href="#">{{ $post-> }}</a></li>
+                                            <li class="meta-date"><a href="#">{{ $post->published_at }}</a></li>
                                             <li class="meta-comments"><a href="#"><i class="fa fa-comment"></i> 2</a></li>
                                         </ul>
                                         <!-- Post Desc -->
                                         <div class="desc">
                                             <p>
-                                                Integer at faucibus urna. Nullam condimentum leo id elit sagittis auctor. Curabitur elementum nunc...
+                                                {{ str_limit($post->details,100) }}
                                             </p>
                                         </div>
                                         <!-- Read More Button -->
-                                        <a href="blog-details.html" class="btn btn-primary">View More</a>
+                                        <a href="#" class="btn btn-primary">View More</a>
                                     </div>
                                 </div>
                             </div>
