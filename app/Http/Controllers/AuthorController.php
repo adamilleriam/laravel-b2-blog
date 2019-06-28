@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Author;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 
 class AuthorController extends Controller
 {
@@ -46,7 +47,18 @@ class AuthorController extends Controller
             'address'=>'required',
             'gender'=>'required',
         ]);
-        Author::create($request->except('_token'));
+
+
+        $author = $request->except('_token');
+        // File upload
+        if($request->hasFile('image')) {
+            $file = $request->file('image');
+            $file->move('images/author/', $file->getClientOriginalName());
+            $author['image'] = 'images/author/'.$file->getClientOriginalName();
+        }
+
+
+        Author::create($author);
         session()->flash('message','Author created successfully');
         return redirect()->route('author.index');
     }
@@ -92,7 +104,14 @@ class AuthorController extends Controller
             'gender'=>'required',
         ]);
 
-        $author->update($request->except('_token'));
+        $author_req= $request->except('_token');
+        if($request->hasFile('image')) {
+            $file = $request->file('image');
+            $file->move('images/author/', $file->getClientOriginalName());
+            File::delete($author->image);
+            $author_req['image'] = 'images/author/'.$file->getClientOriginalName();
+        }
+        $author->update($author_req);
         session()->flash('message','Author updated successfully');
         return redirect()->route('author.index');
     }
@@ -105,6 +124,8 @@ class AuthorController extends Controller
      */
     public function destroy(Author $author)
     {
+        File::delete($author->image);
+
         $author->delete();
         session()->flash('message','Author deleted successfully');
         return redirect()->route('author.index');

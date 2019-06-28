@@ -53,4 +53,17 @@
     @error('gender')
     <div class="pl-1 text-danger">{{ $message }}</div>
     @enderror
+
+    <div class="form-group">
+        <label class="col-md-12">Image</label>
+        <div class="col-md-12">
+            @if(isset($author) && $author->image != null)
+                <img src="{{ asset($author->image) }}" alt="">
+            @endif
+            <input name="image" type="file" placeholder="Upload image" class="form-control form-control-line @error('image') is-invalid @enderror">
+        </div>
+        @error('image')
+        <div class="pl-1 text-danger">{{ $message }}</div>
+        @enderror
+    </div>
 </div>

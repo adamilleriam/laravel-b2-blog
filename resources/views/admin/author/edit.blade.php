@@ -4,7 +4,7 @@
     <div class="offset-2 col-lg-8 col-xlg-9 col-md-7">
         <div class="card">
             <div class="card-body">
-                <form class="form-horizontal form-material" action="{{ route('author.update',$author->id) }}" method="post">
+                <form class="form-horizontal form-material" action="{{ route('author.update',$author->id) }}" method="post" enctype="multipart/form-data">
                     @csrf
                     @method('put')
                     @include('admin.author._form')
