@@ -13,6 +13,9 @@ class Post extends Model
         'author_id',
         'status',
         'file',
+        'published_at',
+        'is_featured',
+        'total_view',
     ];
 
     public function category()
