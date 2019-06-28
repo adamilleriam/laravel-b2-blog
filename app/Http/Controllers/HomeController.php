@@ -2,12 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Post;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
     public function index()
     {
-        return view('front.home');
+        $data['recent_posts'] = Post::where('status','published')->limit(3)->latest()->get();
+//        dd($data);
+        return view('front.home',$data);
     }
 }
