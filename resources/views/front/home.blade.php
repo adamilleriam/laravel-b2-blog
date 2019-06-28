@@ -124,7 +124,7 @@
                                         <!-- Post Meta -->
                                         <ul class="nav meta align-items-center">
                                             <li class="meta-author">
-                                                <img src="{{ asset('theme-front/images/blog/author.jpg') }}" alt="" class="img-fluid">
+                                                <img src="{{ asset($post->author->image) }}" alt="" class="img-fluid">
                                                 <a href="#">{{ $post->author->name }}</a>
                                             </li>
                                             <li class="meta-date"><a href="#">{{ $post->published_at }}</a></li>
