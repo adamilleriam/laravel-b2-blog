@@ -1,9 +1,9 @@
 @extends('layouts.front.master')
 @section('content')
 
-    {{--<!-- Section Title -->
+    <!-- Section Title -->
     <div class="section-title text-center">
-        <h2 >Trending Post</h2>
+        <h2 >Featured Post</h2>
     </div>
     <!-- Section Title -->
 
@@ -13,87 +13,59 @@
             <div class="post-default post-has-bg-img">
                 <div class="post-thumb">
                     <a href="blog-details.html">
-                        <div data-bg-img="assets/images/blog/4.jpg') }}"></div>
+                        <div data-bg-img="{{ asset($featured_posts[0]->file) }}"></div>
                     </a>
                 </div>
                 <div class="post-data">
                     <!-- Category -->
-                    <div class="cats"><a href="category-result.html">Fashion</a></div>
+                    <div class="cats"><a href="#">{{ $featured_posts[0]->category->name }}</a></div>
                     <!-- Title -->
                     <div class="title">
-                        <h2><a href="blog-details.html">Understanding The Background <br> Of Fashion</a></h2>
+                        <h2><a href="{{ route('blog.details',$featured_posts[0]->id) }}">{{ $featured_posts[0]->title }}</a></h2>
                     </div>
                     <!-- Post Meta -->
                     <ul class="nav meta align-items-center">
                         <li class="meta-author">
-                            <img src="{{ asset('theme-front/images/blog/author.jpg') }}" alt="" class="img-fluid">
-                            <a href="#">Alex Garry</a>
+                            <img src="{{ asset($featured_posts[0]->author->image) }}" alt="" class="img-fluid">
+                            <a href="#">{{ $featured_posts[0]->author->name }}</a>
                         </li>
-                        <li class="meta-date"><a href="#">2 Feb 2019</a></li>
-                        <li class="meta-comments"><a href="#"><i class="fa fa-comment"></i> 2</a></li>
+                        <li class="meta-date"><a href="#">{{ date('d M Y',strtotime($featured_posts[0]->published_at)) }}</a></li>
                     </ul>
                 </div>
             </div>
             <!-- End of Post -->
         </div>
         <div class="col-lg-6 order-lg-1">
-            <!-- Post -->
-            <div class="post-default post-has-no-thumb">
-                <div class="post-data">
-                    <!-- Category -->
-                    <div class="cats"><a href="category-result.html">Fashion</a></div>
-                    <!-- Title -->
-                    <div class="title">
-                        <h2><a href="blog-details.html">Understanding The Background Of Fashion</a></h2>
+            @foreach($featured_posts as $index=>$post)
+                <!-- Post -->
+                @if($index != 0)
+                    <div class="post-default post-has-no-thumb">
+                        <div class="post-data">
+                            <!-- Category -->
+                            <div class="cats"><a href="#">{{ $post->category->name }}</a></div>
+                            <!-- Title -->
+                            <div class="title">
+                                <h2><a href="{{ route('blog.details',$post->id) }}">{{ $post->title }}</a></h2>
+                            </div>
+                            <!-- Post Meta -->
+                            <ul class="nav meta align-items-center">
+                                <li class="meta-author">
+                                    <img src="{{ asset($post->author->image) }}" alt="" class="img-fluid">
+                                    <a href="#">{{ $post->author->name }}</a>
+                                </li>
+                                <li class="meta-date"><a href="#">{{ date('d M Y',strtotime($post->published_at)) }}</a></li>
+                            </ul>
+                            <!-- Post Desc -->
+                            <div class="desc">
+                                {{ str_limit($post->details,100) }}
+                            </div>
+                        </div>
                     </div>
-                    <!-- Post Meta -->
-                    <ul class="nav meta align-items-center">
-                        <li class="meta-author">
-                            <img src="{{ asset('theme-front/images/blog/author.jpg') }}" alt="" class="img-fluid">
-                            <a href="#">Alex Garry</a>
-                        </li>
-                        <li class="meta-date"><a href="#">2 Feb 2019</a></li>
-                        <li class="meta-comments"><a href="#"><i class="fa fa-comment"></i> 2</a></li>
-                    </ul>
-                    <!-- Post Desc -->
-                    <div class="desc">
-                        <p>
-                            Integer at faucibus urna. Nullam condimentum leo id elit sagittis auctor. Curabitur elementum nunc...
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <!-- End of Post -->
-
-            <!-- Post -->
-            <div class="post-default post-has-no-thumb">
-                <div class="post-data">
-                    <!-- Category -->
-                    <div class="cats"><a href="category-result.html">Travel</a></div>
-                    <!-- Title -->
-                    <div class="title">
-                        <h2><a href="blog-details.html">30 Things to Do Before You Turn 30 Travel Bucket List</a></h2>
-                    </div>
-                    <!-- Post Meta -->
-                    <ul class="nav meta align-items-center">
-                        <li class="meta-author">
-                            <img src="{{ asset('theme-front/images/blog/author.jpg') }}" alt="" class="img-fluid">
-                            <a href="#">Alex Garry</a>
-                        </li>
-                        <li class="meta-date"><a href="#">2 Feb 2019</a></li>
-                        <li class="meta-comments"><a href="#"><i class="fa fa-comment"></i> 2</a></li>
-                    </ul>
-                    <!-- Post Desc -->
-                    <div class="desc">
-                        <p>
-                            Integer at faucibus urna. Nullam condimentum leo id elit sagittis auctor. Curabitur elementum nunc...
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <!-- End of Post -->
+                @endif
+                    <!-- End of Post -->
+            @endforeach
         </div>
-    </div>--}}
+    </div>
     <div class="row">
         <div class="col-lg-8">
             <!-- Popular Post -->
