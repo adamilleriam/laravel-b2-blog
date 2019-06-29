@@ -45,12 +45,12 @@
                 <!-- Author Box -->
                 <div class="post-about-author-box">
                     <div class="author-avatar">
-                        <img src="assets/images/blog/author.jpg" alt="" class="img-fluid">
+                        <img src="{{ asset($blog_details->author->image) }}" alt="" class="img-fluid">
                     </div>
                     <div class="author-desc">
                         <h5> <a href="#"> {{ $blog_details->author->name }} </a> </h5>
                         <div class="description">
-{{--                            {{ $blog_details->auhtor->details }}--}}
+                            {{ $blog_details->author->details }}
                         </div>
                     </div>
                 </div>
@@ -73,7 +73,7 @@
                         </div>
 
                         <div class="author-text text-center">
-{{--                            {{ $blog_details->auhtor->details }}--}}
+                            {{ $blog_details->author->details }}
                         </div>
                     </div>
                     <!-- End of Widget Content -->

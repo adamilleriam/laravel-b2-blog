@@ -53,8 +53,14 @@
     @error('gender')
     <div class="pl-1 text-danger">{{ $message }}</div>
     @enderror
-
-    <div class="form-group">
+</div>
+<div class="form-group">
+    <label class="col-md-12">Details</label>
+    <div class="col-md-12">
+        <textarea rows="5" name="details" class="form-control form-control-line">{{ old('details',isset($author)?$author->details:null) }}</textarea>
+    </div>
+</div>
+<div class="form-group">
         <label class="col-md-12">Image</label>
         <div class="col-md-12">
             @if(isset($author) && $author->image != null)
