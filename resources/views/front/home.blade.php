@@ -119,7 +119,7 @@
                                         <div class="cats"><a href="#">{{ $post->category->name }}</a></div>
                                         <!-- Title -->
                                         <div class="title">
-                                            <h2><a href="#">{{ $post->title }}</a></h2>
+                                            <h2><a href="{{ route('blog.details',$post->id) }}">{{ $post->title }}</a></h2>
                                         </div>
                                         <!-- Post Meta -->
                                         <ul class="nav meta align-items-center">
@@ -137,7 +137,7 @@
                                             </p>
                                         </div>
                                         <!-- Read More Button -->
-                                        <a href="#" class="btn btn-primary">View More</a>
+                                        <a href="{{ route('blog.details',$post->id) }}" class="btn btn-primary">View More</a>
                                     </div>
                                 </div>
                             </div>
