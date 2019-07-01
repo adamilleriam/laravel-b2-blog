@@ -17,7 +17,7 @@ Route::get('category/{id}','HomeController@category_blogs')->name('category.blog
 
 Route::get('login','LoginController@loginForm')->name('user.login.form');
 Route::post('login','LoginController@login')->name('user.login');
-Route::middleware('auth')->group(function (){
+Route::middleware('auth')->prefix('admin')->group(function (){
     Route::get('dashboard','DashboardController@index')->name('dashboard');
     Route::get('profile','UserController@profile')->name('user.profile');
     Route::resource('category','CategoryController');

@@ -28,7 +28,7 @@ class HomeController extends Controller
     }
     public function category_blogs($id)
     {
-        $data['posts'] = Post::with('category','author')->where(['category_id'=>$id,'status'=>'published'])->orderBy('id','DESC')->get();
+        $data['posts'] = Post::with('category','author')->where(['category_id'=>$id,'status'=>'published'])->orderBy('id','DESC')->paginate(3);
         $data['category'] = Category::findOrFail($id);
         return view('front.blog.category_posts',$data);
     }

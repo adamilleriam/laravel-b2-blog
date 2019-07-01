@@ -12,46 +12,46 @@
                 <!-- End of Section title -->
 
                 <div class="post-blog-list">
-                @foreach($posts as $post)
-                    <!-- Post -->
+                    @foreach($posts as $post)
+                        <!-- Post -->
                         <div class="post-default post-has-right-thumb">
-                            <div class="d-flex flex-wrap">
-                                <div class="post-thumb align-self-stretch order-md-2">
-                                    <a href="blog-details.html">
-                                        <div data-bg-img="{{ asset($post->file) }}"></div>
-                                    </a>
-                                </div>
-                                <div class="post-data order-md-1">
-                                    <!-- Category -->
-                                    <div class="cats"><a href="#">{{ $post->category->name }}</a></div>
-                                    <!-- Title -->
-                                    <div class="title">
-                                        <h2><a href="{{ route('blog.details',$post->id) }}">{{ $post->title }}</a></h2>
+                                <div class="d-flex flex-wrap">
+                                    <div class="post-thumb align-self-stretch order-md-2">
+                                        <a href="blog-details.html">
+                                            <div data-bg-img="{{ asset($post->file) }}"></div>
+                                        </a>
                                     </div>
-                                    <!-- Post Meta -->
-                                    <ul class="nav meta align-items-center">
-                                        <li class="meta-author">
-                                            <img src="{{ asset($post->author->image) }}" alt="" class="img-fluid">
-                                            <a href="#">{{ $post->author->name }}</a>
-                                        </li>
-                                        <li class="meta-date"><a href="#">{{ $post->published_at }}</a></li>
-                                        <li class="meta-comments"><a href="#"><i class="fa fa-eye"></i> {{ $post->total_view }}</a></li>
-                                    </ul>
-                                    <!-- Post Desc -->
-                                    <div class="desc">
-                                        <p>
-                                            {{ str_limit($post->details,100) }}
-                                        </p>
+                                    <div class="post-data order-md-1">
+                                        <!-- Category -->
+                                        <div class="cats"><a href="#">{{ $post->category->name }}</a></div>
+                                        <!-- Title -->
+                                        <div class="title">
+                                            <h2><a href="{{ route('blog.details',$post->id) }}">{{ $post->title }}</a></h2>
+                                        </div>
+                                        <!-- Post Meta -->
+                                        <ul class="nav meta align-items-center">
+                                            <li class="meta-author">
+                                                <img src="{{ asset($post->author->image) }}" alt="" class="img-fluid">
+                                                <a href="#">{{ $post->author->name }}</a>
+                                            </li>
+                                            <li class="meta-date"><a href="#">{{ $post->published_at }}</a></li>
+                                            <li class="meta-comments"><a href="#"><i class="fa fa-eye"></i> {{ $post->total_view }}</a></li>
+                                        </ul>
+                                        <!-- Post Desc -->
+                                        <div class="desc">
+                                            <p>
+                                                {{ str_limit($post->details,100) }}
+                                            </p>
+                                        </div>
+                                        <!-- Read More Button -->
+                                        <a href="{{ route('blog.details',$post->id) }}" class="btn btn-primary">View More</a>
                                     </div>
-                                    <!-- Read More Button -->
-                                    <a href="{{ route('blog.details',$post->id) }}" class="btn btn-primary">View More</a>
                                 </div>
                             </div>
-                        </div>
                         <!-- End of Post -->
                     @endforeach
-
                 </div>
+                {{ $posts->render() }}
             </section>
             <!-- End of Popular Post  -->
 
