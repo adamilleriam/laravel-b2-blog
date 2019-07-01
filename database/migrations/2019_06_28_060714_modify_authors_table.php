@@ -15,6 +15,7 @@ class ModifyAuthorsTable extends Migration
     {
         Schema::table('authors', function (Blueprint $table) {
             $table->text('image')->nullable();
+            $table->text('details')->nullable();
         });
     }
 

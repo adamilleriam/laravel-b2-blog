@@ -14,6 +14,7 @@
 Route::get('/','HomeController@index')->name('home');
 Route::get('blog-details/{id}','HomeController@blog_details')->name('blog.details');
 Route::get('category/{id}','HomeController@category_blogs')->name('category.blogs');
+Route::post('subscribe','SubscriberController@addSubscriber')->name('add.subscriber');
 
 Route::get('login','LoginController@loginForm')->name('user.login.form');
 Route::post('login','LoginController@login')->name('user.login');
