@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Category;
 use App\Post;
 use Illuminate\Http\Request;
 
@@ -26,5 +27,9 @@ class HomeController extends Controller
         $data['recent_posts'] = Post::with('category','author')->where('status','published')->limit(4)->latest()->get();
 //        dd($data);
         return view('front.blog.details',$data);
+    }
+    public function category_blogs($id)
+    {
+        return 'categories';
     }
 }
