@@ -224,9 +224,7 @@
 
                     <!-- Widget Content -->
                     <div class="widget-content">
-                        @foreach($featured_posts as $post)
-                            @include('front.blog._right_featured')
-                        @endforeach
+                        @include('front.blog._right_featured')
                     </div>
                     <!-- End of Widget Content -->
                 </div>
@@ -242,9 +240,7 @@
 
                     <!-- Widget Content -->
                     <div class="widget-content">
-                        @foreach($recent_posts as $post)
-                            @include('front.blog._right_recent')
-                        @endforeach
+                        @include('front.blog._right_recent')
                     </div>
                     <!-- End of Widget Content -->
                 </div>

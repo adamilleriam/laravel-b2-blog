@@ -23,13 +23,13 @@ class HomeController extends Controller
         $posts = Post::findOrFail($id);
         $data['blog_details'] = $posts;
         $posts->increment('total_view');
-        $data['featured_posts'] = Post::where('is_featured',1)->where('status','published')->limit(2)->latest()->get();
-        $data['recent_posts'] = Post::with('category','author')->where('status','published')->limit(4)->latest()->get();
 //        dd($data);
         return view('front.blog.details',$data);
     }
     public function category_blogs($id)
     {
-        return 'categories';
+        $data['posts'] = Post::with('category','author')->where(['category_id'=>$id,'status'=>'published'])->orderBy('id','DESC')->get();
+        $data['category'] = Category::findOrFail($id);
+        return view('front.blog.category_posts',$data);
     }
 }
