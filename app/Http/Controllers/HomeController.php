@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Category;
 use App\Post;
+use App\Author;
+use DB;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -16,6 +18,16 @@ class HomeController extends Controller
             ->orderBy('total_view','DESC')
             ->limit(5)
             ->get();
+
+
+              //Adding new lines
+        $author_info = DB::table('posts')
+                 ->select('author_id', DB::raw('count(*) as total'))
+                 ->groupBy('author_id')->orderBy('total','DESC')
+                 ->first();
+        $author_id = $author_info->author_id;
+
+        $data['author_written_most_posts'] = Author::where('id',$author_id)->first(); 
         return view('front.home',$data);
     }
     public function blog_details($id)

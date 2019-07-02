@@ -12,7 +12,7 @@ class SubscriberController extends Controller
     	$request->validate([
     		'email' => 'required|email'
     	]);
-    	//$data['subscriber'] = $request->except('_token');
+    
     	Subscriber::create(['email'=>$request->email]);
     	return redirect()->route('home');
 

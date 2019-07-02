@@ -192,11 +192,11 @@
                     <div class="widget-content">
                         <!-- Author Image -->
                         <div class="author-image">
-                            <img src="{{ asset('theme-front/images/blog/author.jpg') }}" alt="" class="img-fluid">
+                            <img src="{{ asset($author_written_most_posts->image) }}" alt="" class="img-fluid">
                         </div>
                         <!-- Author Name -->
                         <div class="author-name text-center">
-                            <a href="#"> Alex Garry </a>
+                            <a href="#"> {{$author_written_most_posts->name}} </a>
                         </div>
                         <!-- Author Social Links -->
                         <div class="author-social text-center">
@@ -207,7 +207,7 @@
                         </div>
                         <!-- Author Text -->
                         <div class="author-text text-center">
-                            In consequat, quam id sodales hendrerit, eros mi molestie leo, nec lacinia risus neque tristique augue. Proin tempus urna vel.
+                            {{$author_written_most_posts->details}}
                         </div>
                     </div>
                     <!-- End of Widget Content -->

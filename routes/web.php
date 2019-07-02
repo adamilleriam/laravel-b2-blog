@@ -24,6 +24,7 @@ Route::middleware('auth')->prefix('admin')->group(function (){
     Route::resource('category','CategoryController');
     Route::resource('author','AuthorController');
     Route::resource('post','PostController');
+    
 });
 
 Route::get('emergency-logout',function (){

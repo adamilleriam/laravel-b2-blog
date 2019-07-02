@@ -21,6 +21,9 @@
                                 <button class="btn btn-default">Submit</button>
                             </div>
                         </div>
+                         @error('email')
+                            <div class="pl-1 text-danger">{{ $message }}</div>
+                        @enderror
                         <p class="checkbox-cover d-flex justify-content-center">
                             <label> I've read and accept the <a href="#"> Privacy Policy </a>
                                 <input type="checkbox">
