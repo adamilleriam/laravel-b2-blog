@@ -21,6 +21,7 @@ Route::post('login','LoginController@login')->name('user.login');
 Route::middleware('auth')->prefix('admin')->group(function (){
     Route::get('dashboard','DashboardController@index')->name('dashboard');
     Route::get('profile','UserController@profile')->name('user.profile');
+    Route::get('subscriber','SubscriberController@index')->name('subscriber.index');
     Route::resource('category','CategoryController');
     Route::resource('author','AuthorController');
     Route::resource('post','PostController');
