@@ -130,4 +130,6 @@ class AuthorController extends Controller
         session()->flash('message','Author deleted successfully');
         return redirect()->route('author.index');
     }
+
+    
 }

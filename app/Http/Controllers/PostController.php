@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Author;
 use App\Category;
 use App\Post;
+use DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 
@@ -20,7 +21,6 @@ class PostController extends Controller
 
         $data['title'] = 'Post List';
         $data['posts'] = Post::with('category','author')->orderBy('id','desc')->get();
-//        dd($data);
         $data['serial'] = 1;
         return view('admin.post.index',$data);
     }
@@ -136,4 +136,5 @@ class PostController extends Controller
         session()->flash('message','Post deleted successfully');
         return redirect()->route('post.index');
     }
+
 }
